@@ -13,9 +13,9 @@ public class Guy
     float movementSpeed = 5;
     public void Setup()
     {
-        x = Window.Width / 2;
+        x = Window.Width / 2 + Random.Integer(0,50);
 
-        y = Random.Integer(Window.Height);
+        y = Random.Integer(Window.Height) / 2.5f;
 
         waittime = Random.Integer(5, 9);
     }
@@ -25,18 +25,23 @@ public class Guy
 
     public void Update()
     {
-
+        //body
         Draw.FillColor = Color.Black;
         Draw.LineSize = 1;
         Draw.LineColor = Color.Black;
-        x += speedX * Time.DeltaTime;
+
+            x += speedX * Time.DeltaTime;
+      
         Draw.Circle(x, y, 50);
-        
+        //eyes
+        Draw.FillColor = Color.OffWhite;
+        Draw.Circle(x - 10, y - 15, 10);
+        Draw.Circle(x + 10, y - 15, 10);
 
         // time value starts adding up
-      //  time += Time.DeltaTime;
+          time += Time.DeltaTime;
 
-        time += 1;
+        //time += 1;
 
         Console.WriteLine(x);
 
@@ -67,7 +72,7 @@ public class Guy
             }
             time = 0;
             timelim = 0;
-            //// follow the speed limit! if speedX goes over, you get srt back!
+            //// follow the speed limit! if speedX goes over, you get set back!
             //if(speedX > movementSpeed)
             //{
             //    speedX = speedX -= movementSpeed;
@@ -82,12 +87,12 @@ public class Guy
             //when the guys go offscreen, forcefully shove them back
             if(x <= 0)
             {
-                speedX = 0;
+                //speedX = 0;
                 speedX += movementSpeed * 10;
             }
             if(x >= Window.Width)
             {
-                speedX = 0;
+               // speedX = 0;
                 speedX -= movementSpeed * 10;
             }
         }
