@@ -1,23 +1,28 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Numerics;
 
 namespace MohawkGame2D;
 
 public class Guy
 {
-    float x;
-    float y;
+    Vector2 guyXY;
+    float guyRadius = 50;
+    Color guyColor = new Color();
     float time;
     float waittime;
     float timelim = 0;
     float movementSpeed = 5;
+    Vector2 mousepos;
     public void Setup()
     {
-        x = Window.Width / 2 + Random.Integer(0,50);
 
-        y = Random.Integer(Window.Height) / 2.5f;
+        waittime = Random.Integer(5, 19);
 
-        waittime = Random.Integer(5, 9);
+        guyXY = Random.Vector2(Window.Size);
+
+
     }
 
     public float speedX;
@@ -25,25 +30,41 @@ public class Guy
 
     public void Update()
     {
+        //constantly updates value of mouse pos
+        mousepos = Input.GetMousePosition();
+        //bool for detecting if the mouse is on the guys
+        bool isPointInGuy = Vector2.Distance(mousepos, guyXY) <= guyRadius;
         //body
-        Draw.FillColor = Color.Black;
+        Draw.FillColor = guyColor;
         Draw.LineSize = 1;
         Draw.LineColor = Color.Black;
+        if (isPointInGuy == true)
+        {
+            guyColor = Random.Color();
 
-            x += speedX * Time.DeltaTime;
-      
-        Draw.Circle(x, y, 50);
+            Console.WriteLine("mouse on guy");
+        }
+
+        guyXY.X += speedX * Time.DeltaTime * 30;
+       
+        //for(int i = 0;  i < 10; i++)
+        //{
+        //    speedX -= 1 * Time.DeltaTime * 10;
+        //}
+        speedX = 0;
+        Draw.Circle(guyXY, guyRadius / 2);
         //eyes
-        Draw.FillColor = Color.OffWhite;
-        Draw.Circle(x - 10, y - 15, 10);
-        Draw.Circle(x + 10, y - 15, 10);
+        //Draw.FillColor = Color.OffWhite;
+        // the eyes dont work anymore but do work when i put in 4 args. i dont get it.
+        //Draw.Circle(guyXY.X - 10, guyXY.Y - 15, 5);
+        //Draw.Circle(guyXY.X + 10, guyXY.Y - 15, 5);
 
         // time value starts adding up
           time += Time.DeltaTime;
 
         //time += 1;
 
-        Console.WriteLine(x);
+      //  Console.WriteLine(guyXY.X);
 
 
 
@@ -85,12 +106,12 @@ public class Guy
 
 
             //when the guys go offscreen, forcefully shove them back
-            if(x <= 0)
+            if(guyXY.X <= 0)
             {
                 //speedX = 0;
                 speedX += movementSpeed * 10;
             }
-            if(x >= Window.Width)
+            if(guyXY.X >= Window.Width)
             {
                // speedX = 0;
                 speedX -= movementSpeed * 10;

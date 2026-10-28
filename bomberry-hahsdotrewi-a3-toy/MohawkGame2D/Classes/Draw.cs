@@ -122,7 +122,7 @@ namespace MohawkGame2D
         /// <param name="y">The circle's Y position, defines the vertical centre.</param>
         /// <param name="radius">The circle radius.</param>
         [OverloadResolutionPriority(FloatPriority)]
-        public static void Circle(float x, float y, float radius)
+        public static void Circle(float x, float y, float radius, int v)
             => Circle(new Vector2(x, y), radius, FillColor, LineSize, LineColor);
 
         /// <summary>
@@ -849,6 +849,11 @@ namespace MohawkGame2D
             Vector2[] outline = [position1, position2, position3, position1];
             PolyLine(outline, lineSize, lineColor);
         }
+
+        //internal static void Circle(float v1, float v2, int v3)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         #endregion
 

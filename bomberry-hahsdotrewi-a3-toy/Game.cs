@@ -11,7 +11,7 @@ namespace MohawkGame2D
     /// </summary>
     public class Game
     {
-        Guy Guy1 = new Guy();
+        Guy[] Guy1 = new Guy[150];
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -22,9 +22,12 @@ namespace MohawkGame2D
 
 
             Window.SetSize(1280, 720);
+            for (int i = 0; i < Guy1.Length; i++)
+            {
+                Guy1[i] = new Guy();
 
-            Guy1.Setup();
-
+                Guy1[i].Setup();
+            }
            // bool move;
            
         }
@@ -35,12 +38,11 @@ namespace MohawkGame2D
         public void Update()
         {
 
-            bool move;
-
             Window.ClearBackground(Color.White);
-
-            Guy1.Update();
-
+            for (int i = 0; i < Guy1.Length; i++)
+            {
+                Guy1[i].Update();
+            }
         }
     }
 
