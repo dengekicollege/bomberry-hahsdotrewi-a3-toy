@@ -11,7 +11,7 @@ namespace MohawkGame2D
     /// </summary>
     public class Game
     {
-        Guy[] Guy1 = new Guy[150];
+        Guy[] Guy1 = new Guy[Random.Integer(5, 150)];
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -19,7 +19,7 @@ namespace MohawkGame2D
         {
             Window.SetTitle("A3!");
 
-
+            //set up every guy in the guy array
 
             Window.SetSize(1280, 720);
             for (int i = 0; i < Guy1.Length; i++)
@@ -28,7 +28,6 @@ namespace MohawkGame2D
 
                 Guy1[i].Setup();
             }
-           // bool move;
            
         }
 
@@ -39,6 +38,7 @@ namespace MohawkGame2D
         {
 
             Window.ClearBackground(Color.White);
+            //runs the update in guy for every individual guy
             for (int i = 0; i < Guy1.Length; i++)
             {
                 Guy1[i].Update();
