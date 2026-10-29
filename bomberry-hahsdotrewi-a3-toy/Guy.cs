@@ -52,10 +52,12 @@ public class Guy
         speedX = 0;
         Draw.Circle(guyXY, guyRadius / 2);
         //eyes
-        //Draw.FillColor = Color.OffWhite;
+        Draw.FillColor = Color.OffWhite;
+
         // the eyes dont work anymore but do work when i put in 4 args. i dont get it.
-        //Draw.Circle(guyXY.X - 10, guyXY.Y - 15, 5);
-        //Draw.Circle(guyXY.X + 10, guyXY.Y - 15, 5);
+
+        Draw.Circle(guyXY.X - 10, guyXY.Y - 15, 5);
+        Draw.Circle(guyXY.X + 10, guyXY.Y - 15, 5);
 
         // time value starts adding up
           time += Time.DeltaTime;

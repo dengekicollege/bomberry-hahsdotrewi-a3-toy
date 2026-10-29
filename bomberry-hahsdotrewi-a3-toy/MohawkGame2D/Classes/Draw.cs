@@ -122,7 +122,7 @@ namespace MohawkGame2D
         /// <param name="y">The circle's Y position, defines the vertical centre.</param>
         /// <param name="radius">The circle radius.</param>
         [OverloadResolutionPriority(FloatPriority)]
-        public static void Circle(float x, float y, float radius, int v)
+        public static void Circle(float x, float y, float radius)
             => Circle(new Vector2(x, y), radius, FillColor, LineSize, LineColor);
 
         /// <summary>
