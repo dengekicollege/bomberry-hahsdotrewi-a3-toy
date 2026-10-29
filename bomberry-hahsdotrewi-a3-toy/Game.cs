@@ -11,7 +11,7 @@ namespace MohawkGame2D
     /// </summary>
     public class Game
     {
-        Guy[] Guy1 = new Guy[Random.Integer(5, 150)];
+        Guy[] Guy1 = new Guy[300];
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>

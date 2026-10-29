@@ -17,16 +17,14 @@ public class Guy
     Vector2 mousepos;
     public void Setup()
     {
-
-        waittime = Random.Integer(5, 19);
-
+        //random time to wait for every movement
+        waittime = Random.Integer(5, 30);
+        //guys spawn in at random places
         guyXY = Random.Vector2(Window.Size);
-
 
     }
 
     public float speedX;
-
 
     public void Update()
     {
@@ -36,7 +34,7 @@ public class Guy
         bool isPointInGuy = Vector2.Distance(mousepos, guyXY) <= guyRadius;
         //body
         Draw.FillColor = guyColor;
-        Draw.LineSize = 1;
+        Draw.LineSize = 0;
         Draw.LineColor = Color.Black;
         if (isPointInGuy == true)
         {
